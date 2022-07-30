@@ -57,6 +57,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/api/auth/login").permitAll()
+                .antMatchers("/api/personalInformation/getOne").permitAll()
                 .antMatchers("/api/experience/getAll").permitAll()
                 .anyRequest().authenticated();
 

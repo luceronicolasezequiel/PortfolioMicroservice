@@ -2,7 +2,6 @@ package PortfolioMicroservice.PortfolioMicroservice.Api.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.ITaskRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
