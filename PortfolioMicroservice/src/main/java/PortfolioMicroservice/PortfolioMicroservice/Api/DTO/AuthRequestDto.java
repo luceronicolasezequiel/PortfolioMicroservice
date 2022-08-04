@@ -5,19 +5,18 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 
 public class AuthRequestDto {
-    @Email
     @Length(min = 5, max = 50)
-    private String email;
+    private String username;
 
     @Length(min = 5, max = 64)
     private String password;
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

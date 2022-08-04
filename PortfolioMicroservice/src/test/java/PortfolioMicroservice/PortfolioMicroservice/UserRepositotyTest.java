@@ -22,10 +22,10 @@ public class UserRepositotyTest {
     @Test
     public void testCreateUser() {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String password = "admin";
+        String password = "padmin";
         String encodedPassword = passwordEncoder.encode(password);
 
-        User newUser = new User("admin@gmail.com", encodedPassword);
+        User newUser = new User("uadmin", encodedPassword);
 
         User savedUser = this.userRepository.save(newUser);
 

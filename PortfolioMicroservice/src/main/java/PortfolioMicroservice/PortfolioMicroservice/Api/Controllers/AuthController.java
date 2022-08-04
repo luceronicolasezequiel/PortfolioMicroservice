@@ -31,12 +31,12 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody @Valid AuthRequestDto request) {
         try {
             Authentication authentication = authManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
             );
 
             User user = (User)authentication.getPrincipal();
             String accessToken = jwtTokenUtil.generateAccessToken(user);
-            AuthResponseDto response = new AuthResponseDto(user.getEmail(), accessToken);
+            AuthResponseDto response = new AuthResponseDto(user.getUsername(), accessToken);
 
             return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
