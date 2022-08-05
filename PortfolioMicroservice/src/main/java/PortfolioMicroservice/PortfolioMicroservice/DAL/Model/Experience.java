@@ -41,8 +41,4 @@ public class Experience {
     @OneToMany(mappedBy = "experience")
     @JsonManagedReference
     private List<Task> tasks;
-
-    @OneToMany(mappedBy = "experience")
-    @JsonManagedReference
-    private List<Hability> habilities;
 }

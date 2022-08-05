@@ -23,8 +23,6 @@ public class Hability {
     @Length(min = 3, max = 100)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "experience_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
-    private Experience experience;
+    @Column(nullable = false)
+    private Integer percentage;
 }
