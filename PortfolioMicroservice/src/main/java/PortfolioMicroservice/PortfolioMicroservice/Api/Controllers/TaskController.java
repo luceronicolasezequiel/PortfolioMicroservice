@@ -18,7 +18,5 @@ public class TaskController {
     }
 
     @GetMapping("/getAll")
-    public List<ITaskGetAllResponseDto> getAll(){
-        return this.taskRepository.getAll();
-    }
+    public List<ITaskGetAllResponseDto> getAll(){ return this.taskRepository.getAll(); }
 }
