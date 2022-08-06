@@ -4,7 +4,7 @@ import java.util.Date;
 
 public interface IProyectGetAllResponseDto {
     Integer getId();
-    String getnName();
+    String getName();
     Date getDateRealization();
     String getDescription();
     String getUrls();
