@@ -1,11 +1,8 @@
 package PortfolioMicroservice.PortfolioMicroservice.Api.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.IPersonalInformationGetOneResponseDto;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.PersonalInformation;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IPersonalInformationRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/personalInformation")

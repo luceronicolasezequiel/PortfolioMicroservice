@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface IPersonalInformationRepository extends JpaRepository<PersonalInformation, Integer> {
 
     @Query(
-            value = "SELECT id, concat_ws(' ', name, surname) AS fullName, title, summary " +
+            value = "SELECT id, name, surname, title, summary " +
                     "FROM personal_information " +
                     "LIMIT 1",
             nativeQuery = true
