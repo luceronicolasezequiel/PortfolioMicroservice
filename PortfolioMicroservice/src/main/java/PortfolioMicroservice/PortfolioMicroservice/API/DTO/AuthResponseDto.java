@@ -1,4 +1,4 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.DTO;
+package PortfolioMicroservice.PortfolioMicroservice.API.DTO;
 
 public class AuthResponseDto {
     private String username;

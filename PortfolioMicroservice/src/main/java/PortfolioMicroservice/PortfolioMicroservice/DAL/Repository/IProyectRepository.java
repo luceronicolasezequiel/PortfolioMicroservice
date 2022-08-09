@@ -1,6 +1,6 @@
 package PortfolioMicroservice.PortfolioMicroservice.DAL.Repository;
 
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.IProyectGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Proyect;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

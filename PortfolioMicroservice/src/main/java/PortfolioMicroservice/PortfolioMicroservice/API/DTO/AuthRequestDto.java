@@ -1,8 +1,6 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.DTO;
+package PortfolioMicroservice.PortfolioMicroservice.API.DTO;
 
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.Email;
 
 public class AuthRequestDto {
     @Length(min = 5, max = 50)

@@ -1,7 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.DAL.Repository;
 
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.ITaskByExperienceResponseDto;
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.ITaskGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.ITaskByExperienceResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.ITaskGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

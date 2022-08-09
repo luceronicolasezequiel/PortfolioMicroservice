@@ -1,7 +1,7 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.Controllers;
+package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.AuthRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.AuthResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.AuthRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.AuthResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.User;
 import PortfolioMicroservice.PortfolioMicroservice.Security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;

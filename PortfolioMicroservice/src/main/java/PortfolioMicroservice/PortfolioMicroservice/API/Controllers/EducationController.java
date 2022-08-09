@@ -1,7 +1,6 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.Controllers;
+package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.IEducationGetAllResponseDto;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Education;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IEducationGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IEducationRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

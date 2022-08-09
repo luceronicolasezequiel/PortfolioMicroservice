@@ -1,6 +1,6 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.Controllers;
+package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.IProyectGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IProyectRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
