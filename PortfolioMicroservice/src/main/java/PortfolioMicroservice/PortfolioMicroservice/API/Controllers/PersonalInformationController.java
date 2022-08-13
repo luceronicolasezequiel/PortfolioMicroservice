@@ -1,11 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IPersonalInformationGetOneResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateFullnameAndTitleRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IPersonalInformationService;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.PersonalInformation;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IPersonalInformationRepository;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
