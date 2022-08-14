@@ -2,6 +2,7 @@ package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IPersonalInformationGetOneResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateFullnameAndTitleRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateSummaryRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.PersonalInformation;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IPersonalInformationRepository;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,24 @@ public class PersonalInformationService implements IPersonalInformationService {
         personalInformation.setName(request.getName());
         personalInformation.setSurname(request.getSurname());
         personalInformation.setTitle(request.getTitle());
+        save(personalInformation);
+
+        personalInformation = personalInformationRepository.findById(personalInformation.getId()).orElse(null);
+
+        return personalInformation;
+    }
+
+    @Override
+    public PersonalInformation updateSummary(UpdateSummaryRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Personal Information Bad Request.");
+
+        var personalInformation = personalInformationRepository.findById(request.getId()).orElse(null);
+
+        if (personalInformation == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Personal Information Not Found with Id " + request.getId() + ".");
+
+        personalInformation.setSummary(request.getSummary());
         save(personalInformation);
 
         personalInformation = personalInformationRepository.findById(personalInformation.getId()).orElse(null);

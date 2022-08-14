@@ -1,4 +1,4 @@
-package PortfolioMicroservice.PortfolioMicroservice;
+package PortfolioMicroservice.PortfolioMicroservice.Security;
 
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IUserRepository;
 import PortfolioMicroservice.PortfolioMicroservice.Security.JwtTokenFilter;
