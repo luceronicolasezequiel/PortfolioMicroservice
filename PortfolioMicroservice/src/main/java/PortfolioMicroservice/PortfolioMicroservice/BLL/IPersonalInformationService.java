@@ -14,6 +14,6 @@ public interface IPersonalInformationService {
 
     public PersonalInformation updateSummary(UpdateSummaryRequestDto request) throws HttpClientErrorException;
 
-    public void save(PersonalInformation personalInformation);
+    public PersonalInformation save(PersonalInformation request);
 
 }

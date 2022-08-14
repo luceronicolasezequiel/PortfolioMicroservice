@@ -33,19 +33,18 @@ public class PersonalInformationService implements IPersonalInformationService {
         if (request == null)
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Personal Information Bad Request.");
 
-        var personalInformation = personalInformationRepository.findById(request.getId()).orElse(null);
+        var response = personalInformationRepository.findById(request.getId()).orElse(null);
 
-        if (personalInformation == null)
+        if (response == null)
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Personal Information Not Found with Id " + request.getId() + ".");
 
-        personalInformation.setName(request.getName());
-        personalInformation.setSurname(request.getSurname());
-        personalInformation.setTitle(request.getTitle());
-        save(personalInformation);
+        response.setName(request.getName());
+        response.setSurname(request.getSurname());
+        response.setTitle(request.getTitle());
 
-        personalInformation = personalInformationRepository.findById(personalInformation.getId()).orElse(null);
+        response = save(response);
 
-        return personalInformation;
+        return response;
     }
 
     @Override
@@ -53,21 +52,21 @@ public class PersonalInformationService implements IPersonalInformationService {
         if (request == null)
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Personal Information Bad Request.");
 
-        var personalInformation = personalInformationRepository.findById(request.getId()).orElse(null);
+        var response = personalInformationRepository.findById(request.getId()).orElse(null);
 
-        if (personalInformation == null)
+        if (response == null)
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Personal Information Not Found with Id " + request.getId() + ".");
 
-        personalInformation.setSummary(request.getSummary());
-        save(personalInformation);
+        response.setSummary(request.getSummary());
+        response = save(response);
 
-        personalInformation = personalInformationRepository.findById(personalInformation.getId()).orElse(null);
-
-        return personalInformation;
+        return response;
     }
 
     @Override
-    public void save(PersonalInformation personalInformation) {
-        personalInformationRepository.save(personalInformation);
+    public PersonalInformation save(PersonalInformation request) {
+        var response = personalInformationRepository.save(request);
+
+        return response;
     }
 }
