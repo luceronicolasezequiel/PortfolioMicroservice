@@ -6,9 +6,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 public class CreateExperienceRequestDto {
-    @Column(nullable = false)
-    private Integer id;
-
     @Column(nullable = false, length = 60)
     @Length(min = 3, max = 60)
     private String position;
@@ -24,10 +21,6 @@ public class CreateExperienceRequestDto {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "period_to", nullable = true)
     private Date periodTo;
-
-    public Integer getId() {
-        return id;
-    }
 
     public String getPosition() {
         return position;
