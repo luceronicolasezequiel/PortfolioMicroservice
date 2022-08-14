@@ -1,6 +1,5 @@
 package PortfolioMicroservice.PortfolioMicroservice.DAL.Model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,26 +8,26 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "experiences")
+@Table(name = "educations")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Experience {
+public class Education {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false, length = 60)
-    @Length(min = 3, max = 60)
-    private String position;
-
-    @Column(nullable = false, length = 50)
-    @Length(min = 3, max = 50)
+    @Length(min = 2, max = 60)
     private String organization;
+
+    @Column(nullable = false, length = 100)
+    @Length(min = 5, max = 100)
+    private String title;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "period_from", nullable = false)
@@ -38,7 +37,4 @@ public class Experience {
     @Column(name = "period_to", nullable = true)
     private Date periodTo;
 
-    @OneToMany(mappedBy = "experience")
-    @JsonManagedReference
-    private List<Task> tasks;
 }

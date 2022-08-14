@@ -1,22 +1,22 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.DTO;
+package PortfolioMicroservice.PortfolioMicroservice.API.DTO;
 
 public class AuthResponseDto {
-    private String email;
+    private String username;
     private String accessToken;
 
     public AuthResponseDto() {}
 
-    public AuthResponseDto(String email, String accessToken) {
-        this.email = email;
+    public AuthResponseDto(String username, String accessToken) {
+        this.username = username;
         this.accessToken = accessToken;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getAccessToken() {

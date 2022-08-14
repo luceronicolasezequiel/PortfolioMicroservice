@@ -20,8 +20,8 @@ public class JwtTokenUtil {
 
     public String generateAccessToken(User user) {
         return Jwts.builder()
-                .setSubject(user.getId() + "," + user.getEmail())
-                .setIssuer("AuthLogic")
+                .setSubject(user.getId() + "," + user.getUsername())
+                .setIssuer("AuthAPI")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
                 .signWith(SignatureAlgorithm.HS512, secretKey)

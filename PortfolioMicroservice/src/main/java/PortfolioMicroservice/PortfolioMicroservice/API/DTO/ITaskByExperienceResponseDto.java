@@ -1,4 +1,4 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.DTO;
+package PortfolioMicroservice.PortfolioMicroservice.API.DTO;
 
 public interface ITaskByExperienceResponseDto {
     Integer getTaskId();

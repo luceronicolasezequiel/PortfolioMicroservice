@@ -1,4 +1,4 @@
-package PortfolioMicroservice.PortfolioMicroservice;
+package PortfolioMicroservice.PortfolioMicroservice.Security;
 
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IUserRepository;
 import PortfolioMicroservice.PortfolioMicroservice.Security.JwtTokenFilter;
@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.servlet.http.HttpServletResponse;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -33,7 +35,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(username -> userRepository.findByEmail(username)
+        auth.userDetailsService(username -> userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"))
         );
     }
@@ -46,6 +48,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors(withDefaults());
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
@@ -57,9 +60,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/api/auth/login").permitAll()
+                .antMatchers("/api/personalInformation/getOne").permitAll()
+                .antMatchers("/api/experience/getAll").permitAll()
+                .antMatchers("/api/task/getAll").permitAll()
+                .antMatchers("/api/education/getAll").permitAll()
+                .antMatchers("/api/hability/getAll").permitAll()
+                .antMatchers("/api/proyect/getAll").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
-
 }
