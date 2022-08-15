@@ -70,4 +70,14 @@ public class ExperienceService implements IExperienceService {
         return response;
     }
 
+    @Override
+    public void delete(Integer id) throws HttpClientErrorException {
+        var response = experienceRepository.findById(id).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Experience Not Found with Id " + id + ".");
+
+        experienceRepository.deleteById(id);
+    }
+
 }

@@ -18,4 +18,6 @@ public interface IExperienceService {
 
     public Experience save(Experience experience);
 
+    public void delete(Integer id) throws HttpClientErrorException;
+
 }

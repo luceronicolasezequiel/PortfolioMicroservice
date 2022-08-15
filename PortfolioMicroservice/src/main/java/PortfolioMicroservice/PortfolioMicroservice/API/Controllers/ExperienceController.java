@@ -63,4 +63,15 @@ public class ExperienceController {
         }
     }
 
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        try {
+            experienceService.delete(id);
+
+            return ResponseEntity.noContent().build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
 }
