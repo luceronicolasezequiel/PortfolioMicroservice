@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateExperienceRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IExperienceGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateExperienceRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
@@ -20,8 +21,8 @@ public class ExperienceService implements IExperienceService {
     }
 
     @Override
-    public List<Experience> getAll() {
-        var response = experienceRepository.findAll();
+    public List<IExperienceGetAllResponseDto> getAll() {
+        var response = experienceRepository.getAll();
 
         return response;
     }

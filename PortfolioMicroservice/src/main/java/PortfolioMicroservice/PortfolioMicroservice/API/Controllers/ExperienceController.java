@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateExperienceRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IExperienceGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateExperienceRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IExperienceService;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
@@ -24,8 +25,14 @@ public class ExperienceController {
     }
 
     @GetMapping("/getAll")
-    public List<Experience> getAll(){
-        return experienceService.getAll();
+    public ResponseEntity<?> getAll(){
+        try {
+            var response = experienceService.getAll();
+
+            return ResponseEntity.ok(response);
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
     }
 
     @PostMapping("/create")
