@@ -1,9 +1,9 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateExperienceRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateExperienceRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IExperienceService;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -36,6 +36,19 @@ public class ExperienceController {
             URI experienceURI = URI.create("/api/experience/create/" + response.getId());
 
             return ResponseEntity.created(experienceURI).body(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateExperienceRequestDto request) {
+        try {
+            var response = experienceService.update(request);
+
+            return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {

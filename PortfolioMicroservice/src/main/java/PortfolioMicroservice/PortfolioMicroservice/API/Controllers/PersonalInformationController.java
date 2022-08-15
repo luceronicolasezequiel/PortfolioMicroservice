@@ -24,9 +24,9 @@ public class PersonalInformationController {
     @GetMapping("/getOne")
     public ResponseEntity<?> getOne() {
         try {
-            var personalInformation = personalInformationService.getOne();
+            var response = personalInformationService.getOne();
 
-            return ResponseEntity.ok(personalInformation);
+            return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {
@@ -37,9 +37,9 @@ public class PersonalInformationController {
     @PutMapping("/updateFullnameAndTitle")
     public ResponseEntity<?> updateFullnameAndTitle(@RequestBody @Valid UpdateFullnameAndTitleRequestDto request) {
         try {
-            var personalInformation = personalInformationService.updateFullnameAndTitle(request);
+            var response = personalInformationService.updateFullnameAndTitle(request);
 
-            return ResponseEntity.ok(personalInformation);
+            return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {
@@ -50,9 +50,9 @@ public class PersonalInformationController {
     @PutMapping("/updateSummary")
     public ResponseEntity<?> updateSummary(@RequestBody @Valid UpdateSummaryRequestDto request) {
         try {
-            var personalInformation = personalInformationService.updateSummary(request);
+            var response = personalInformationService.updateSummary(request);
 
-            return ResponseEntity.ok(personalInformation);
+            return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {
