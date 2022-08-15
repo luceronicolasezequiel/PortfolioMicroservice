@@ -2,6 +2,7 @@ package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.ITaskGetByExperienceResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Task;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.ITaskRepository;
@@ -46,6 +47,23 @@ public class TaskService implements ITaskService {
         var response = new Task();
         response.setName(request.getName());
         response.setExperience(experience);
+        response = save(response);
+
+        return response;
+    }
+
+    @Override
+    public Task update(UpdateTaskRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Task Bad Request.");
+
+        var response = taskRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Task Not Found with Id " + request.getId() + ".");
+
+        response.setName(request.getName());
+
         response = save(response);
 
         return response;
