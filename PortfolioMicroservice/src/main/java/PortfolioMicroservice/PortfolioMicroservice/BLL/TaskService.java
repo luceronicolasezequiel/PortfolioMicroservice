@@ -1,6 +1,5 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.GetByExperienceTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.ITaskGetByExperienceResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.ITaskRepository;
 import org.springframework.http.HttpStatus;
@@ -19,11 +18,11 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public List<ITaskGetByExperienceResponseDto> getByExperience(GetByExperienceTaskRequestDto request) throws HttpClientErrorException {
-        if (request == null)
+    public List<ITaskGetByExperienceResponseDto> getByExperience(Integer experienceId) throws HttpClientErrorException {
+        if (experienceId <= 0)
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Task Bad Request.");
 
-        var response = taskRepository.getByExperience(request.getId());
+        var response = taskRepository.getByExperience(experienceId);
 
         return response;
     }
