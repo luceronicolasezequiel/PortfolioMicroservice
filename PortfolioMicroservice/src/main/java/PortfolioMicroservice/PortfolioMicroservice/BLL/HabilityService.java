@@ -2,6 +2,7 @@ package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IHabilityGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Hability;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IHabilityRepository;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,24 @@ public class HabilityService implements IHabilityService {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Hability Bad Request.");
 
         var response = new Hability();
+        response.setName(request.getName());
+        response.setPercentage(request.getPercentage());
+
+        response = save(response);
+
+        return response;
+    }
+
+    @Override
+    public Hability update(UpdateHabilityRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Hability Bad Request.");
+
+        var response = habilityRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Hability Not Found with Id " + request.getId() + ".");
+
         response.setName(request.getName());
         response.setPercentage(request.getPercentage());
 

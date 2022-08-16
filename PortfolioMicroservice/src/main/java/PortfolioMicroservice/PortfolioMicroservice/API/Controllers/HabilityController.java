@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateHabilityRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IHabilityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,19 @@ public class HabilityController {
             URI experienceURI = URI.create("/api/hability/create/" + response.getId());
 
             return ResponseEntity.created(experienceURI).body(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateHabilityRequestDto request) {
+        try {
+            var response = habilityService.update(request);
+
+            return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {
