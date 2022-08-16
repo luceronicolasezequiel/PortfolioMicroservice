@@ -13,7 +13,8 @@ public interface IHabilityRepository extends JpaRepository<Hability, Integer> {
 
     @Query(
             value = "SELECT id, name, percentage " +
-                    "FROM habilities AS h",
+                    "FROM habilities AS h " +
+                    "ORDER BY name ASC",
             nativeQuery = true
     )
     List<IHabilityGetAllResponseDto> getAll();
