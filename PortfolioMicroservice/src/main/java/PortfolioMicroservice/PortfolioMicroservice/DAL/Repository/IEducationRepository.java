@@ -14,7 +14,7 @@ public interface IEducationRepository extends JpaRepository<Education, Integer> 
     @Query(
             value = "SELECT id, organization, title, period_from AS periodFrom, period_to AS periodTo " +
                     "FROM educations AS e " +
-                    "ORDER BY period_to DESC, period_from DESC",
+                    "ORDER BY e.period_to IS NULL DESC, e.period_to DESC, e.period_from DESC",
             nativeQuery = true
     )
     List<IEducationGetAllResponseDto> getAll();
