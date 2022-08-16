@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateTaskRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.ITaskGetByExperienceResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Task;
@@ -74,6 +75,19 @@ public class TaskService implements ITaskService {
         var response = taskRepository.save(task);
 
         return response;
+    }
+
+    @Override
+    public void delete(DeleteTaskRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Task Bad Request.");
+
+        var response = taskRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Task Not Found with Id " + request.getId() + ".");
+
+        taskRepository.deleteById(request.getId());
     }
 
 }

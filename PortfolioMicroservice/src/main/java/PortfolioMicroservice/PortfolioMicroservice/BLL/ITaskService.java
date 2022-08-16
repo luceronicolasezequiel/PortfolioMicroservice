@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateTaskRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.ITaskGetByExperienceResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Task;
@@ -17,5 +18,7 @@ public interface ITaskService {
     public Task update(UpdateTaskRequestDto request) throws HttpClientErrorException;
 
     public Task save(Task task);
+
+    public void delete(DeleteTaskRequestDto request) throws HttpClientErrorException;
 
 }

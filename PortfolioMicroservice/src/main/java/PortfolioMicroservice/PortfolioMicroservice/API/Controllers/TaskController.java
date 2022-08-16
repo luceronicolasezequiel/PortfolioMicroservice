@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateTaskRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.ITaskService;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,19 @@ public class TaskController {
             var response = taskService.update(request);
 
             return ResponseEntity.ok(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(@RequestBody @Valid DeleteTaskRequestDto request) {
+        try {
+            taskService.delete(request);
+
+            return ResponseEntity.noContent().build();
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {
