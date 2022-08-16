@@ -2,6 +2,7 @@ package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IEducationGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Education;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IEducationRepository;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,26 @@ public class EducationService implements IEducationService {
         response.setTitle(request.getTitle());
         response.setPeriodFrom(request.getPeriodFrom());
         response.setPeriodTo(request.getPeriodTo());
+        response = save(response);
+
+        return response;
+    }
+
+    @Override
+    public Education update(UpdateEducationRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Education Bad Request.");
+
+        var response = educationRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Education Not Found with Id " + request.getId() + ".");
+
+        response.setOrganization(request.getOrganization());
+        response.setTitle(request.getTitle());
+        response.setPeriodFrom(request.getPeriodFrom());
+        response.setPeriodTo(request.getPeriodTo());
+
         response = save(response);
 
         return response;

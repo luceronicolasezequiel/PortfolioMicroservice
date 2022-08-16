@@ -1,6 +1,8 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IEducationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,4 +49,17 @@ public class EducationController {
         }
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateEducationRequestDto request) {
+        try {
+            var response = educationService.update(request);
+
+            return ResponseEntity.ok(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+    
 }
