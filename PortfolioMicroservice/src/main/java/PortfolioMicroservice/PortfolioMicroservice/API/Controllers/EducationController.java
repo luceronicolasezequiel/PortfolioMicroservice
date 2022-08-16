@@ -1,8 +1,6 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IEducationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,5 +59,18 @@ public class EducationController {
             return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
         }
     }
-    
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(@RequestBody @Valid DeleteEducationRequestDto request) {
+        try {
+            educationService.delete(request);
+
+            return ResponseEntity.noContent().build();
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
 }

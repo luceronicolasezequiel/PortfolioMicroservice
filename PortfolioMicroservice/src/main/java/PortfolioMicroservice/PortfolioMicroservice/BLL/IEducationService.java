@@ -1,8 +1,6 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IEducationGetAllResponseDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Education;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -17,5 +15,7 @@ public interface IEducationService {
     public Education update(UpdateEducationRequestDto request) throws HttpClientErrorException;
 
     public Education save(Education education);
+
+    public void delete(DeleteEducationRequestDto request) throws HttpClientErrorException;
 
 }

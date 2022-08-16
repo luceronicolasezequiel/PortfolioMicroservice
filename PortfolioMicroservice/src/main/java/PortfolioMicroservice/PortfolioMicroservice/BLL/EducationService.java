@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IEducationGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Education;
@@ -67,6 +68,19 @@ public class EducationService implements IEducationService {
         var response = educationRepository.save(education);
 
         return response;
+    }
+
+    @Override
+    public void delete(DeleteEducationRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Education Bad Request.");
+
+        var response = educationRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Education Not Found with Id " + request.getId() + ".");
+
+        educationRepository.deleteById(request.getId());
     }
 
 }
