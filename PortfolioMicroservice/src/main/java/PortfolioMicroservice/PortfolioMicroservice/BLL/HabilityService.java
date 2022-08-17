@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateHabilityRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IHabilityGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Hability;
@@ -64,6 +65,19 @@ public class HabilityService implements IHabilityService {
         var response = habilityRepository.save(hability);
 
         return response;
+    }
+
+    @Override
+    public void delete(DeleteHabilityRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Hability Bad Request.");
+
+        var response = habilityRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Hability Not Found with Id " + request.getId() + ".");
+
+        habilityRepository.deleteById(request.getId());
     }
 
 }

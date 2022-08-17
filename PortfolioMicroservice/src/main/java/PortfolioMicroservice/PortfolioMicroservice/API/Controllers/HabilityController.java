@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateHabilityRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IHabilityService;
 import org.springframework.http.HttpStatus;
@@ -53,6 +54,19 @@ public class HabilityController {
             var response = habilityService.update(request);
 
             return ResponseEntity.ok(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(@RequestBody @Valid DeleteHabilityRequestDto request) {
+        try {
+            habilityService.delete(request);
+
+            return ResponseEntity.noContent().build();
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {
