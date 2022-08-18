@@ -1,8 +1,6 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateProyectRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProyectRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IProyectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +49,19 @@ public class ProyectController {
             var response = proyectService.update(request);
 
             return ResponseEntity.ok(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(@RequestBody @Valid DeleteProyectRequestDto request) {
+        try {
+            proyectService.delete(request);
+
+            return ResponseEntity.noContent().build();
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (HttpClientErrorException ex) {

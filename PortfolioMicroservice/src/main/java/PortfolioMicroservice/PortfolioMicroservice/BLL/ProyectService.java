@@ -1,6 +1,7 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateProyectRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Proyect;
@@ -68,6 +69,19 @@ public class ProyectService implements IProyectService {
         var response = proyectRepository.save(proyect);
 
         return response;
+    }
+
+    @Override
+    public void delete(DeleteProyectRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Proyect Bad Request.");
+
+        var response = proyectRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Proyect Not Found with Id " + request.getId() + ".");
+
+        proyectRepository.deleteById(request.getId());
     }
 
 }
