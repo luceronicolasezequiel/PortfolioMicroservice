@@ -2,6 +2,7 @@ package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Proyect;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IProyectRepository;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,26 @@ public class ProyectService implements IProyectService {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Proyect Bad Request.");
 
         var response = new Proyect();
+        response.setName(request.getName());
+        response.setDateRealization(request.getDateRealization());
+        response.setDescription(request.getDescription());
+        response.setUrls(request.getUrls());
+
+        response = save(response);
+
+        return response;
+    }
+
+    @Override
+    public Proyect update(UpdateProyectRequestDto request) throws HttpClientErrorException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Proyect Bad Request.");
+
+        var response = proyectRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Proyect Not Found with Id " + request.getId() + ".");
+
         response.setName(request.getName());
         response.setDateRealization(request.getDateRealization());
         response.setDescription(request.getDescription());
