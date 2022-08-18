@@ -1,11 +1,16 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IProyectService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -22,6 +27,21 @@ public class ProyectController {
         var response = proyectService.getAll();
 
         return response;
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody @Valid CreateProyectRequestDto request) {
+        try {
+            var response = proyectService.create(request);
+
+            URI experienceURI = URI.create("/api/proyect/create/" + response.getId());
+
+            return ResponseEntity.created(experienceURI).body(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
     }
 
 }
