@@ -1,0 +1,797 @@
+{
+	"info": {
+		"_postman_id": "c1eb3b43-0411-4cce-8a0e-cf26b583894a",
+		"name": "PortfolioCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();\r",
+							"pm.environment.set(\"accessToken\", responseJson.accessToken);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"{{usernameLogin}}\",\r\n    \"password\": \"{{passwordLogin}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/auth/login",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PersonalInformationGetOne",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriPortfolio}}/personalInformation/getOne",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"personalInformation",
+						"getOne"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PersonalInformationUpdateFullnameAndTitle",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Ezequiel\",\r\n    \"surname\": \"Lucero\",\r\n    \"title\": \"Lic. en Sistemas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/personalInformation/updateFullnameAndTitle",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"personalInformation",
+						"updateFullnameAndTitle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PersonalInformationUpdateProfile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "profile",
+							"type": "file",
+							"src": "/C:/Users/nel/Downloads/DniNELHoja1.jpg"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/personalInformation/updateProfile",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"personalInformation",
+						"updateProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PersonalInformationUpdateSummary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"summary\": \"¡Hola! Soy Nicolás Lucero, vivo en Ticino, Córdoba, Argentina. Me recibí en la carrera de Licenciatura en Informática. Tengo más de 8 años ejerciendo mi profesión, en donde tuve la posibilidad de trabajar con diferentes tecnologías. Actualmente me desempeño como Full Stack Developer. Me motiva seguir creciendo en lo profesional y personal.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/personalInformation/updateSummary",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"personalInformation",
+						"updateSummary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExperienceGetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriPortfolio}}/experience/getAll",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"experience",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExperienceCreate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"position\": \"Developer\",\r\n    \"organization\": \"WPN\",\r\n    \"periodFrom\": \"2018-10-01T00:00:00.000+00:00\",\r\n    \"periodTo\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/experience/create",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"experience",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExperienceUpdate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 13,\r\n    \"position\": \"Admin\",\r\n    \"organization\": \"Plus\",\r\n    \"periodFrom\": \"2018-11-17T00:00:00.000+00:00\",\r\n    \"periodTo\": \"2019-12-25T00:00:00.000+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/experience/update",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"experience",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExperienceDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{uriPortfolio}}/experience/delete/3",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"experience",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskGetByExperience",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzLHVhZG1pbiIsImlzcyI6IkF1dGhBUEkiLCJpYXQiOjE2NTk3OTM2NTEsImV4cCI6MTY1OTg4MDA1MX0.GcQUzC_BPSDGQvsRvLJq_QGIeqZdfpMWNH1cYFd5YzF3o7FeyAP1pEIJf2-N3eYmMxcszaThflW0JtIrQnQQtg",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{uriPortfolio}}/task/getByExperience/7",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"task",
+						"getByExperience",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskCreate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Testing de aplicaciones\",\r\n    \"experienceId\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/task/create",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"task",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaskDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 10\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/task/delete",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"task",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EducationGetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriPortfolio}}/education/getAll",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"education",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EducationCreate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"organization\": \"Universidad Nacional de Villa María – U.N.V.M.\",\r\n    \"title\": \"Licenciatura en Informática\",\r\n    \"periodFrom\": \"2013-03-01T00:00:00.000+00:00\",\r\n    \"periodTo\": \"2016-12-21T00:00:00.000+00:00\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/education/create",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"education",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EducationUpdate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"organization\": \"Plus\",\r\n    \"title\": \"Bachiller 2\",\r\n    \"periodFrom\": \"2018-11-17T00:00:00.000+00:00\",\r\n    \"periodTo\": \"2019-12-25T00:00:00.000+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/education/update",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"education",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EducationDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/education/delete",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"education",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HabilityGetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriPortfolio}}/hability/getAll",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"hability",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HabilityCreate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Docker\",\r\n    \"percentage\": 30\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/hability/create",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"hability",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HabilityUpdate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Sql Server TTR\",\r\n    \"percentage\": 55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/hability/update",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"hability",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HabilityDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 6\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/hability/delete",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"hability",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProyectGetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriPortfolio}}/proyect/getAll",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"proyect",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProyectCreate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Aplicación Web para Generadora de Energía GTB\",\r\n    \"dateRealization\": \"2019-01-15T00:00:00.000+00:00\",\r\n    \"description\": \"Jobs para la automatización de obtención e inserción de valores de análisis de Servidor Remoto SQL Server. Visualización de Análisis, con la posibilidad de cargar diversos\",\r\n    \"urls\": null\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/proyect/create",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"proyect",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProyectUpdate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"name\": \"Name Test\",\r\n    \"dateRealization\": \"2022-01-15T00:00:00.000+00:00\",\r\n    \"description\": \"description test\",\r\n    \"urls\": \"url test\"    \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/proyect/update",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"proyect",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProyectDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriPortfolio}}/proyect/delete",
+					"host": [
+						"{{uriPortfolio}}"
+					],
+					"path": [
+						"proyect",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
