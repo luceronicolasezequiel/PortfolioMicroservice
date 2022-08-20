@@ -15,7 +15,7 @@ public class User implements UserDetails {
     private Integer id;
 
     @Column(nullable = false, unique = true, length = 50)
-    private String email;
+    private String username;
 
     @Column(nullable = false, length = 64)
     private String password;
@@ -23,8 +23,8 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String email, String password) {
-        this.email = email;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
@@ -36,12 +36,13 @@ public class User implements UserDetails {
         return id;
     }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -51,11 +52,6 @@ public class User implements UserDetails {
 
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.email;
     }
 
     @Override

@@ -1,7 +1,7 @@
-package PortfolioMicroservice.PortfolioMicroservice.Api.Controllers;
+package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.AuthRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.Api.DTO.AuthResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.AuthRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.AuthResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.User;
 import PortfolioMicroservice.PortfolioMicroservice.Security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +31,12 @@ public class AuthController {
     public ResponseEntity<?> login(@RequestBody @Valid AuthRequestDto request) {
         try {
             Authentication authentication = authManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
             );
 
             User user = (User)authentication.getPrincipal();
             String accessToken = jwtTokenUtil.generateAccessToken(user);
-            AuthResponseDto response = new AuthResponseDto(user.getEmail(), accessToken);
+            AuthResponseDto response = new AuthResponseDto(user.getUsername(), accessToken);
 
             return ResponseEntity.ok(response);
         } catch (BadCredentialsException ex) {
