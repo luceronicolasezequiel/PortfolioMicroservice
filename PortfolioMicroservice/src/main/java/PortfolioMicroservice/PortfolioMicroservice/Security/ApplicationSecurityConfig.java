@@ -62,7 +62,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/auth/login").permitAll()
                 .antMatchers("/api/personalInformation/getOne").permitAll()
                 .antMatchers("/api/experience/getAll").permitAll()
-                .antMatchers("/api/task/getAll").permitAll()
+                .antMatchers("/api/task/getByExperience/{experienceId}").permitAll()
                 .antMatchers("/api/education/getAll").permitAll()
                 .antMatchers("/api/hability/getAll").permitAll()
                 .antMatchers("/api/proyect/getAll").permitAll()

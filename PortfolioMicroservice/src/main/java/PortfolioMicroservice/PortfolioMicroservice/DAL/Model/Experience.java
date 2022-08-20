@@ -38,7 +38,7 @@ public class Experience {
     @Column(name = "period_to", nullable = true)
     private Date periodTo;
 
-    @OneToMany(mappedBy = "experience")
+    @OneToMany(mappedBy = "experience", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonManagedReference
     private List<Task> tasks;
 }

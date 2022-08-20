@@ -34,4 +34,7 @@ public class PersonalInformation {
     @Column(nullable = false, length = 1000)
     @Length(min = 3, max = 1000)
     private String summary;
+
+    @Lob
+    private byte[] profile;
 }

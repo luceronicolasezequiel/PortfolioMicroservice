@@ -1,9 +1,8 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateExperienceRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateExperienceRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IExperienceService;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -12,7 +11,6 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/experience")
@@ -24,8 +22,14 @@ public class ExperienceController {
     }
 
     @GetMapping("/getAll")
-    public List<Experience> getAll(){
-        return experienceService.getAll();
+    public ResponseEntity<?> getAll(){
+        try {
+            var response = experienceService.getAll();
+
+            return ResponseEntity.ok(response);
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
     }
 
     @PostMapping("/create")
@@ -38,6 +42,30 @@ public class ExperienceController {
             return ResponseEntity.created(experienceURI).body(response);
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateExperienceRequestDto request) {
+        try {
+            var response = experienceService.update(request);
+
+            return ResponseEntity.ok(response);
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
+        }
+    }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        try {
+            experienceService.delete(id);
+
+            return ResponseEntity.noContent().build();
         } catch (HttpClientErrorException ex) {
             return new ResponseEntity<String>(ex.getStatusText(), ex.getStatusCode());
         }

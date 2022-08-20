@@ -4,21 +4,28 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 
-public class UpdateSummaryRequestDto {
+public class UpdateHabilityRequestDto {
 
     @Column(nullable = false)
     private Integer id;
 
     @Column(nullable = false)
-    @Length(min = 3, max = 1000)
-    private String summary;
+    @Length(min = 2, max = 100)
+    private String name;
+
+    @Column(nullable = false)
+    private Integer percentage;
 
     public Integer getId() {
         return id;
     }
 
-    public String getSummary() {
-        return summary;
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPercentage() {
+        return percentage;
     }
 
 }

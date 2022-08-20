@@ -2,12 +2,15 @@ package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IPersonalInformationGetOneResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateFullnameAndTitleRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProfileRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateSummaryRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.PersonalInformation;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IPersonalInformationRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+
+import java.io.IOException;
 
 @Service
 public class PersonalInformationService implements IPersonalInformationService {
@@ -48,6 +51,23 @@ public class PersonalInformationService implements IPersonalInformationService {
     }
 
     @Override
+    public PersonalInformation updateProfile(UpdateProfileRequestDto request) throws HttpClientErrorException, IOException {
+        if (request == null)
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Personal Information Bad Request.");
+
+        var response = personalInformationRepository.findById(request.getId()).orElse(null);
+
+        if (response == null)
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Personal Information Not Found with Id " + request.getId() + ".");
+
+        response.setProfile(request.getProfile().getBytes());
+
+        response = save(response);
+
+        return response;
+    }
+
+    @Override
     public PersonalInformation updateSummary(UpdateSummaryRequestDto request) throws HttpClientErrorException {
         if (request == null)
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Personal Information Bad Request.");
@@ -58,6 +78,7 @@ public class PersonalInformationService implements IPersonalInformationService {
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Personal Information Not Found with Id " + request.getId() + ".");
 
         response.setSummary(request.getSummary());
+
         response = save(response);
 
         return response;
@@ -69,4 +90,5 @@ public class PersonalInformationService implements IPersonalInformationService {
 
         return response;
     }
+
 }

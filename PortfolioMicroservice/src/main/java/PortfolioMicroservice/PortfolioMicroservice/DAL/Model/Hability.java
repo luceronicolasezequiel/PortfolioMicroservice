@@ -20,7 +20,7 @@ public class Hability {
     private Integer id;
 
     @Column(nullable = false, length = 100)
-    @Length(min = 3, max = 100)
+    @Length(min = 2, max = 100)
     private String name;
 
     @Column(nullable = false)
