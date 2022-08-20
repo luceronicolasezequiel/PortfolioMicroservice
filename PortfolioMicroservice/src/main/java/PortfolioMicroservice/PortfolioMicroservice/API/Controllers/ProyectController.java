@@ -1,6 +1,9 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateProyectRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteProyectRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IProyectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

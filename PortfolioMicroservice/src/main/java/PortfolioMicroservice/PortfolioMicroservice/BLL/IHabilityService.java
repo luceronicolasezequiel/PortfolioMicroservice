@@ -1,6 +1,9 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateHabilityRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteHabilityRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IHabilityGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Hability;
 import org.springframework.web.client.HttpClientErrorException;
 

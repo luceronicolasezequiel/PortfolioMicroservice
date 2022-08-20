@@ -5,10 +5,11 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.Column;
 
 public class UpdateSummaryRequestDto {
+
     @Column(nullable = false)
     private Integer id;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false)
     @Length(min = 3, max = 1000)
     private String summary;
 
@@ -19,4 +20,5 @@ public class UpdateSummaryRequestDto {
     public String getSummary() {
         return summary;
     }
+
 }

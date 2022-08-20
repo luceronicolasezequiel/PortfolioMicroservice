@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface IPersonalInformationRepository extends JpaRepository<PersonalInformation, Integer> {
 
     @Query(
-            value = "SELECT id, name, surname, title, summary " +
+            value = "SELECT id, name, surname, title, summary, profile " +
                     "FROM personal_information " +
                     "LIMIT 1",
             nativeQuery = true

@@ -6,4 +6,5 @@ public interface IPersonalInformationGetOneResponseDto {
     String getSurname();
     String getTitle();
     String getSummary();
+    byte[] getProfile();
 }

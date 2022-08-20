@@ -1,10 +1,8 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateExperienceRequestDto;
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IExperienceGetAllResponseDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateExperienceRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IExperienceService;
-import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,7 +11,6 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/experience")

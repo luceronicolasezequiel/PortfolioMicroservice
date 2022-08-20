@@ -1,6 +1,8 @@
 package PortfolioMicroservice.PortfolioMicroservice.API.Controllers;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IEducationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

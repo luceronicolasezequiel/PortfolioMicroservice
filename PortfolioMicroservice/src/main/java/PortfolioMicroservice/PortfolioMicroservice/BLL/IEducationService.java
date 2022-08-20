@@ -1,6 +1,9 @@
 package PortfolioMicroservice.PortfolioMicroservice.BLL;
 
-import PortfolioMicroservice.PortfolioMicroservice.API.DTO.*;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.CreateEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.DeleteEducationRequestDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IEducationGetAllResponseDto;
+import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Education;
 import org.springframework.web.client.HttpClientErrorException;
 
