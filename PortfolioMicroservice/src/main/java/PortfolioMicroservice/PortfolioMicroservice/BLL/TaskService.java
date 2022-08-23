@@ -7,6 +7,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateTaskRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Task;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.ITaskRepository;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;

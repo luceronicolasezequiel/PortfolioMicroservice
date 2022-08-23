@@ -6,6 +6,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProfileRequestD
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateSummaryRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.PersonalInformation;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IPersonalInformationRepository;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;

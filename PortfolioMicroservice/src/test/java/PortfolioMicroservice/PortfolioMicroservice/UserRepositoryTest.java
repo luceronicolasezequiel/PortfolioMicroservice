@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(value = false)
-public class UserRepositotyTest {
+@Rollback(value = true)
+public class UserRepositoryTest {
     @Autowired
     IUserRepository userRepository;
 

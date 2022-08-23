@@ -20,16 +20,16 @@ public class Proyect {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
-    @Length(min = 2, max = 100)
+    @Column(nullable = false, length = 150)
+    @Length(min = 2, max = 150)
     private String name;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_realization", nullable = false)
     private Date dateRealization;
 
-    @Column(nullable = false, length = 400)
-    @Length(min = 5, max = 400)
+    @Column(nullable = false, length = 1000)
+    @Length(min = 5, max = 1000)
     private String description;
 
     @Column(nullable = true, length = 400)

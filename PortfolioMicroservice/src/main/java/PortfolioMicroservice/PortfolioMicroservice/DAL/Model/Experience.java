@@ -22,12 +22,12 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 60)
-    @Length(min = 3, max = 60)
+    @Column(nullable = false, length = 100)
+    @Length(min = 3, max = 100)
     private String position;
 
-    @Column(nullable = false, length = 50)
-    @Length(min = 3, max = 50)
+    @Column(nullable = false, length = 100)
+    @Length(min = 3, max = 100)
     private String organization;
 
     @Temporal(TemporalType.TIMESTAMP)
