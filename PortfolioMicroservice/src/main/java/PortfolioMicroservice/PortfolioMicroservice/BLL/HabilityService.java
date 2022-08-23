@@ -6,6 +6,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IHabilityGetAllRespon
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateHabilityRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Hability;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IHabilityRepository;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;

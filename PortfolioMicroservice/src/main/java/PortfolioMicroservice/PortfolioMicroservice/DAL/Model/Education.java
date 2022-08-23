@@ -21,12 +21,12 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 60)
-    @Length(min = 2, max = 60)
+    @Column(nullable = false, length = 100)
+    @Length(min = 2, max = 100)
     private String organization;
 
-    @Column(nullable = false, length = 100)
-    @Length(min = 5, max = 100)
+    @Column(nullable = false, length = 150)
+    @Length(min = 5, max = 150)
     private String title;
 
     @Temporal(TemporalType.TIMESTAMP)

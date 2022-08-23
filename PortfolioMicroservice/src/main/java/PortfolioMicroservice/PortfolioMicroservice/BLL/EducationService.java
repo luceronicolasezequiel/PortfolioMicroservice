@@ -6,6 +6,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IEducationGetAllRespo
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateEducationRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Education;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IEducationRepository;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
