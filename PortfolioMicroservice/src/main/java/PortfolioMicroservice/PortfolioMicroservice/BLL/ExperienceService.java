@@ -5,6 +5,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IExperienceGetAllResp
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateExperienceRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Experience;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IExperienceRepository;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;

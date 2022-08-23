@@ -6,6 +6,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.IProyectGetAllRespons
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProyectRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Model.Proyect;
 import PortfolioMicroservice.PortfolioMicroservice.DAL.Repository.IProyectRepository;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;

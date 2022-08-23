@@ -4,6 +4,7 @@ import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateProfileRequestD
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateFullnameAndTitleRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.API.DTO.UpdateSummaryRequestDto;
 import PortfolioMicroservice.PortfolioMicroservice.BLL.IPersonalInformationService;
+import lombok.var;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;

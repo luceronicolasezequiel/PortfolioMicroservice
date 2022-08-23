@@ -21,8 +21,8 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
-    @Length(min = 3, max = 100)
+    @Column(nullable = false, length = 300)
+    @Length(min = 3, max = 300)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
